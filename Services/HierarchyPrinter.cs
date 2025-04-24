@@ -23,11 +23,12 @@ namespace DataImportUtility.Services
 				.AsNoTracking()
 				.ToList();
 
-			// Восстанавливаем связи
 			var dict = departments.ToDictionary(d => d.Id);
+
 			foreach (var dept in departments)
 			{
-				dept.Children.Clear(); // 👈 предотвращаем дубли
+				dept.Children.Clear();
+
 				if (dept.ParentId != null && dict.TryGetValue(dept.ParentId.Value, out var parent))
 				{
 					dept.Parent = parent;
@@ -107,6 +108,7 @@ namespace DataImportUtility.Services
 		private string FormatEmployee(Employee e)
 		{
 			var name = e.FullName.ToLower();
+
 			if (e.JobTitle != null)
 				return $"{name} (должность ID={e.JobTitle.Id})";
 			else

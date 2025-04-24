@@ -39,7 +39,6 @@ namespace DataImportUtility.Services
 
 			using var reader = new TsvReader(filePath);
 
-			// Пропускаем заголовок и нумеруем строки
 			var lines = reader.ReadRows()
 							  .Skip(1)
 							  .Select((row, idx) => (Row: row, LineNo: idx + 2))

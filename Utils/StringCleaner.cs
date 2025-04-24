@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 namespace DataImportUtility.Utils
 {
@@ -13,7 +13,6 @@ namespace DataImportUtility.Utils
 			if (string.IsNullOrWhiteSpace(s))
 				return string.Empty;
 
-			// Удаление лишних пробелов и приведение к нижнему регистру
 			var trimmed = Regex.Replace(s.Trim(), "\\s+", " ");
 			return trimmed.ToLowerInvariant();
 		}

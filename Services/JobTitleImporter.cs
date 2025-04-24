@@ -22,14 +22,21 @@ public class JobTitleImporter : IJobTitleImporter
 		var toAdd = new List<JobTitle>();
 
 		int lineNo = 0;
+
 		foreach (var cols in reader.ReadRows())
 		{
 			lineNo++;
+
 			try
 			{
-				if (cols.Length < 1) throw new Exception("Нет столбцов");
+				if (cols.Length < 1) 
+					throw new Exception("Нет столбцов");
+
 				var name = cols[0];
-				if (string.IsNullOrEmpty(name)) continue;
+
+				if (string.IsNullOrEmpty(name)) 
+					continue;
+
 				if (!existing.Contains(name))
 				{
 					existing.Add(name);
